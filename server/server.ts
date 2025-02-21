@@ -12,8 +12,8 @@ declare module "express-serve-static-core" {
 }
 
 const app = express();
-const port: number = 3000;
-const mongoUrl: string = "mongodb://127.0.0.1:27017";
+const port: number = Number(process.env.PORT) || 3000;
+const mongoUrl: string = process.env.MONGO_URL || "mongodb+srv://matthiascasanova0311:P44SpaL4GKj1ba3K@cluster0.qxej1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName: string = "maBase";
 const JWT_SECRET = "maSuperCleSecrete"; // À stocker dans un .env en production
 
