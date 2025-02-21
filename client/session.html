@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace Utilisateur - Geocache</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Geocache App</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn btn-outline-light" onclick="window.location.href='geocache.html'">Créer une géocache</button>
+        </li>
+        <li class="nav-item ml-2">
+          <button id="logoutBtn" class="btn btn-outline-light">Déconnexion</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <div class="container mt-4">
+    <h1 class="text-center">Bienvenue <span id="username"></span> !</h1>
+    <div id="map" class="my-4"></div>
+  </div>
+
+  <!-- Modal pour modifier une géocache -->
+  <div class="modal fade" id="editCacheModal" tabindex="-1" role="dialog" aria-labelledby="editCacheModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="editCacheForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editCacheModalLabel">Modifier la géocache</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="editCacheId">
+            <div class="form-group">
+              <label for="editNomCache">Nom de la cache</label>
+              <input type="text" id="editNomCache" class="form-control" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="editLat">Latitude</label>
+                <input type="number" id="editLat" class="form-control" step="any" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="editLng">Longitude</label>
+                <input type="number" id="editLng" class="form-control" step="any" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editDifficulty">Difficulté (entre 1 et 5)</label>
+              <input type="number" id="editDifficulty" class="form-control" required min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="editDescription">Description</label>
+              <textarea id="editDescription" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal pour ajouter un commentaire -->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="commentForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="commentModalLabel">Ajouter un commentaire</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="commentGeocacheId">
+            <div class="form-group">
+              <label for="commentText">Commentaire</label>
+              <textarea id="commentText" class="form-control" rows="3" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, jQuery, Popper.js et Leaflet JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="module" src="js/clientSession.js"></script>
+</body>
+</html>

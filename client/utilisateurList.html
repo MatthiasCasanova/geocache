@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des Utilisateurs - Geocache</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Liste des Utilisateurs</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" id="utilisateurTable">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Mot de passe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les lignes seront insérées ici par le script -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Bootstrap JS et dépendances -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    fetch('/utilisateur')
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.querySelector('#utilisateurTable tbody');
+        data.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${item._id}</td><td>${item.email}</td><td>${item.password}</td>`;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(error => console.error('Erreur:', error));
+  </script>
+</body>
+</html>
