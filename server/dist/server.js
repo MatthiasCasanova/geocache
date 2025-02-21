@@ -17,10 +17,10 @@ const path_1 = __importDefault(require("path"));
 const mongodb_1 = require("mongodb");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const app = (0, express_1.default)();
-const port = 3000;
-const mongoUrl = "mongodb://127.0.0.1:27017";
+const port: number = Number(process.env.PORT) || 3000;
+const mongoUrl: string = process.env.MONGO_URL || "mongodb+srv://matthiascasanova0311:P44SpaL4GKj1ba3K@cluster0.qxej1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName = "maBase";
-const JWT_SECRET = "maSuperCleSecrete"; // À stocker dans un .env en production
+const JWT_SECRET = process.env.JWT_SECRET || "maSuperCleSecrete";
 // Le dossier public se trouve dans ../../client (car ce fichier est dans server/src)
 const publicPath = path_1.default.join(__dirname, "../../client");
 app.use(express_1.default.json());
