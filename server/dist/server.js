@@ -18,7 +18,7 @@ const mongodb_1 = require("mongodb");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const app = (0, express_1.default)();
 const port = Number(process.env.PORT) || 3000;
-const mongoUrl: string = process.env.MONGO_URL || "mongodb+srv://matthiascasanova0311:P44SpaL4GKj1ba3K@cluster0.qxej1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoUrl = process.env.MONGO_URL || "mongodb+srv://matthiascasanova0311:P44SpaL4GKj1ba3K@cluster0.qxej1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName = "maBase";
 const JWT_SECRET = process.env.JWT_SECRET || "maSuperCleSecrete";
 // Le dossier public se trouve dans ../../client (car ce fichier est dans server/src)
